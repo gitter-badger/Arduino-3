@@ -15,7 +15,7 @@ int buzz_00 = 9;
 
 int delayOn = 20;
 int delayOff = 60;
-int delayBuzz = 30;
+int delayBuzz = 1;
 
 void setup()  {
   pinMode(led_00, OUTPUT);    // LED #1
@@ -32,56 +32,56 @@ void setup()  {
 
   pinMode(bott_00, INPUT);
   pinMode(bott_01, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(bott_01),swInterrupt, FALLING);
+  attachInterrupt(digitalPinToInterrupt(bott_01), swInterrupt, FALLING);
 
 }
 
 void loop() {
   goLeft();
   goRight();
-  }
+}
 
 void swInterrupt() {
-    if ( digitalRead(bott_01) == HIGH ) {
-          digitalWrite(buzz_00, HIGH); delay(1000);
-          digitalWrite(buzz_00, LOW);
-    }
+  if ( digitalRead(bott_01) == HIGH ) {
+    digitalWrite(buzz_00, HIGH); delay(1000);
+    digitalWrite(buzz_00, LOW);
   }
+}
 
 
 void goLeft() {
-    for (int i = led_00; i<=led_04; i+=1) {
-      digitalWrite(i, HIGH);  delay(delayOn);
-    }
-    for (int i = led_05; i<=led_08; i+=1) {
-      digitalWrite(i, HIGH);  delay(delayOn);
-    }
-    for (int i = led_00; i<=led_04; i+=1)  {
-      digitalWrite(i, LOW);   delay(delayOff);
-    }
-    for (int i = led_05; i<=led_08; i+=1)  {
-      digitalWrite(i, LOW);   delay(delayOff);
-    }
+  for (int i = led_00; i <= led_04; i += 1) {
+    digitalWrite(i, HIGH);  delay(delayOn);
+  }
+  for (int i = led_05; i <= led_08; i += 1) {
+    digitalWrite(i, HIGH);  delay(delayOn);
+  }
+  for (int i = led_00; i <= led_04; i += 1)  {
+    digitalWrite(i, LOW);   delay(delayOff);
+  }
+  for (int i = led_05; i <= led_08; i += 1)  {
+    digitalWrite(i, LOW);   delay(delayOff);
+  }
 
   digitalWrite(buzz_00, HIGH); delay(delayBuzz);
-  digitalWrite(buzz_00, LOW);  
+  digitalWrite(buzz_00, LOW);
 }
 
 void goRight() {
-    for (int i = led_08; i>=led_05; i-=1) {
-      digitalWrite(i, HIGH);  delay(delayOn);
-    }
-    for (int i = led_04; i>=led_00; i-=1) {
-      digitalWrite(i, HIGH);  delay(delayOn);
-    }
-    for (int i = led_08; i>=led_05; i-=1)  {
-      digitalWrite(i, LOW);   delay(delayOff);
-    }
-    for (int i = led_04; i>=led_00; i-=1)  {
-      digitalWrite(i, LOW);   delay(delayOff);
-    }
+  for (int i = led_08; i >= led_05; i -= 1) {
+    digitalWrite(i, HIGH);  delay(delayOn);
+  }
+  for (int i = led_04; i >= led_00; i -= 1) {
+    digitalWrite(i, HIGH);  delay(delayOn);
+  }
+  for (int i = led_08; i >= led_05; i -= 1)  {
+    digitalWrite(i, LOW);   delay(delayOff);
+  }
+  for (int i = led_04; i >= led_00; i -= 1)  {
+    digitalWrite(i, LOW);   delay(delayOff);
+  }
 
   digitalWrite(buzz_00, HIGH); delay(delayBuzz);
-  digitalWrite(buzz_00, LOW);  
+  digitalWrite(buzz_00, LOW);
 }
 
